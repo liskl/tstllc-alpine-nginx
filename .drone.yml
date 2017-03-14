@@ -2,11 +2,13 @@ pipeline:
   docker:
     image: plugins/docker
     repo: registry.tstllc.net/llisk/alpine-nginx
+    username: ${REPO_USERNAME}
+    password: ${REPO_PASSWORD}
+    email: ${REPO_EMAILADDR}
+    registry: registry.tstllc.net
     force_tag: true
-
 publish:
   docker:
-
     tag:
       - latest
     when:
