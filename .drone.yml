@@ -7,6 +7,7 @@ pipeline:
     email: ${REPO_EMAILADDR}
     registry: registry.tstllc.net
     force_tag: true
+
   docker:
     tag:
       - latest
