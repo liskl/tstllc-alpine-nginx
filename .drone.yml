@@ -7,15 +7,12 @@ pipeline:
     email: ${REPO_EMAILADDR}
     registry: registry.tstllc.net
     force_tag: true
-publish:
   docker:
     tag:
       - latest
     when:
       branch:
         include: [ master, release/* ]
-
-publish:
   docker:
     repo: registry.tstllc.net/llisk/alpine-nginx
     tag:
@@ -24,14 +21,3 @@ publish:
     when:
       branch:
         exclude: [ master ]
-
-publish:
-  ecr:
-    image: plugins/ecr
-    access_key: ${AWS_ACCESS_KEY_ID}
-    secret_key: ${AWS_SECRET_ACCESS_KEY}
-    repo: 945362765384.dkr.ecr.us-east-1.amazonaws.com/util/${DRONE_REPO_NAME}
-    region: us-east-1
-    tags:
-      - latest
-      - ${DRONE_BRANCH}.build-${DRONE_COMMIT_SHA:0:8}
